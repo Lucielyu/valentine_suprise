@@ -25,6 +25,7 @@ const Index = () => {
   const [noScale, setNoScale] = useState(1);
   const [noClickCount, setNoClickCount] = useState(0);
   const [showNoButton, setShowNoButton] = useState(true);
+  const [valentineNoCount, setValentineNoCount] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -188,7 +189,13 @@ const Index = () => {
                 <button onClick={handleYesClick} className="btn-yes">
                   Yes
                 </button>
-                <RunawayButton onClick={() => {}} disabled />
+                {valentineNoCount >= 8 ? (
+                  <button onClick={handleYesClick} className="btn-yes">
+                    Yes
+                  </button>
+                ) : (
+                  <RunawayButton onClick={() => setValentineNoCount(c => c + 1)} />
+                )}
               </>
             }
           />
