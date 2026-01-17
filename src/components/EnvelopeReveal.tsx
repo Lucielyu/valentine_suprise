@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Heart } from 'lucide-react';
 
 interface EnvelopeRevealProps {
@@ -10,55 +10,18 @@ const EnvelopeReveal = ({ partnerName, yourName }: EnvelopeRevealProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showLetter, setShowLetter] = useState(false);
 
-  useEffect(() => {
-    const timer1 = setTimeout(() => setIsOpen(true), 500);
-    const timer2 = setTimeout(() => setShowLetter(true), 1500);
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
-  }, []);
+  const handleOpenEnvelope = () => {
+    setIsOpen(true);
+    setTimeout(() => setShowLetter(true), 1000);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8">
-      <div className="relative w-full max-w-md">
-        {/* Envelope */}
-        <div className="envelope relative w-full aspect-[4/3] rounded-lg overflow-hidden">
-          {/* Envelope flap */}
-          <div
-            className={`absolute top-0 left-0 w-full h-1/2 origin-top transition-transform duration-1000 ease-out z-10 ${
-              isOpen ? 'rotate-x-180' : ''
-            }`}
-            style={{
-              background: 'linear-gradient(180deg, hsl(350 70% 80%) 0%, hsl(350 60% 85%) 100%)',
-              clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
-              transformStyle: 'preserve-3d',
-              transform: isOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
-            }}
-          />
-          
-          {/* Envelope body */}
-          <div
-            className="absolute bottom-0 left-0 w-full h-3/4 rounded-b-lg"
-            style={{
-              background: 'linear-gradient(180deg, hsl(350 65% 88%) 0%, hsl(350 60% 82%) 100%)',
-            }}
-          />
-
-          {/* Heart seal */}
-          <div
-            className={`absolute top-1/4 left-1/2 -translate-x-1/2 z-20 transition-all duration-500 ${
-              isOpen ? 'opacity-0 scale-150' : 'opacity-100'
-            }`}
-          >
-            <Heart className="w-12 h-12 text-love-red fill-love-red animate-heart-beat" />
-          </div>
-        </div>
-
-        {/* Letter */}
+      <div className="relative w-full max-w-md flex flex-col items-center">
+        {/* Letter - positioned above envelope when revealed */}
         <div
-          className={`letter-paper absolute top-1/2 left-1/2 -translate-x-1/2 w-[90%] rounded-lg p-6 md:p-8 transition-all duration-1000 ${
-            showLetter ? 'opacity-100 -translate-y-[120%]' : 'opacity-0 translate-y-0'
+          className={`letter-paper w-[90%] max-w-sm rounded-lg p-6 md:p-8 transition-all duration-1000 mb-6 ${
+            showLetter ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-32 pointer-events-none absolute'
           }`}
           style={{
             boxShadow: '0 10px 40px -10px rgba(0,0,0,0.2)',
@@ -89,6 +52,47 @@ const EnvelopeReveal = ({ partnerName, yourName }: EnvelopeRevealProps) => {
             </div>
           </div>
         </div>
+
+        {/* Envelope */}
+        <div className="envelope relative w-full aspect-[4/3] rounded-lg overflow-hidden">
+          {/* Envelope flap */}
+          <div
+            className={`absolute top-0 left-0 w-full h-1/2 origin-top transition-transform duration-1000 ease-out z-10`}
+            style={{
+              background: 'linear-gradient(180deg, hsl(350 70% 80%) 0%, hsl(350 60% 85%) 100%)',
+              clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
+              transformStyle: 'preserve-3d',
+              transform: isOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
+            }}
+          />
+          
+          {/* Envelope body */}
+          <div
+            className="absolute bottom-0 left-0 w-full h-3/4 rounded-b-lg"
+            style={{
+              background: 'linear-gradient(180deg, hsl(350 65% 88%) 0%, hsl(350 60% 82%) 100%)',
+            }}
+          />
+
+          {/* Heart seal */}
+          <div
+            className={`absolute top-1/4 left-1/2 -translate-x-1/2 z-20 transition-all duration-500 ${
+              isOpen ? 'opacity-0 scale-150' : 'opacity-100'
+            }`}
+          >
+            <Heart className="w-12 h-12 text-love-red fill-love-red animate-heart-beat" />
+          </div>
+        </div>
+
+        {/* Open Envelope Button */}
+        {!isOpen && (
+          <button
+            onClick={handleOpenEnvelope}
+            className="btn-yes mt-6 animate-bounce-gentle"
+          >
+            Open Envelope 💌
+          </button>
+        )}
       </div>
     </div>
   );
