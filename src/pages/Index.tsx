@@ -7,14 +7,12 @@ import GrowingYesButton from '@/components/GrowingYesButton';
 import ShrinkingNoButton from '@/components/ShrinkingNoButton';
 import EnvelopeReveal from '@/components/EnvelopeReveal';
 
-import ragdollCute from '@/assets/ragdoll-cute.png';
-import ragdollSad from '@/assets/ragdoll-sad.png';
-import ragdollEating from '@/assets/ragdoll-eating.png';
-import ragdollFlowers from '@/assets/ragdoll-flowers.png';
+import corgiLove from '@/assets/corgi-love.gif';
+import corgiBored from '@/assets/corgi-bored.gif';
+import corgiFinal from '@/assets/corgi-final.gif';
 
-// TODO: Replace these with actual names
-const PARTNER_NAME = "My Love";
-const YOUR_NAME = "Your Valentine";
+const PARTNER_NAME = "Amy";
+const YOUR_NAME = "Luciel";
 
 type Step = 'love' | 'love-retry' | 'free' | 'valentine' | 'final';
 
@@ -108,8 +106,8 @@ const Index = () => {
             question={`${PARTNER_NAME}, do you love me?`}
             image={
               <img
-                src={ragdollCute}
-                alt="Cute ragdoll cat"
+                src={corgiLove}
+                alt="Cute corgi couple"
                 className="w-64 h-64 object-contain mx-auto"
               />
             }
@@ -130,8 +128,8 @@ const Index = () => {
             question="TRY AGAIN, DO YOU EVEN LOVE ME?"
             image={
               <img
-                src={ragdollSad}
-                alt="Sad ragdoll cat"
+                src={corgiBored}
+                alt="Bored corgi couple"
                 className="w-64 h-64 object-contain mx-auto"
               />
             }
@@ -154,8 +152,8 @@ const Index = () => {
             question="Good bubbi! Are you free on the evening of February 14th, Saturday?"
             image={
               <img
-                src={ragdollEating}
-                alt="Ragdoll cat eating"
+                src={corgiLove}
+                alt="Cute corgi couple"
                 className="w-64 h-64 object-contain mx-auto"
               />
             }
@@ -178,8 +176,8 @@ const Index = () => {
             question={`${PARTNER_NAME}, will you be my Valentine?`}
             image={
               <img
-                src={ragdollFlowers}
-                alt="Ragdoll cat with flowers"
+                src={corgiFinal}
+                alt="Corgi couple kissing"
                 className="w-64 h-64 object-contain mx-auto"
               />
             }
