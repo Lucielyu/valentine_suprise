@@ -9,6 +9,7 @@ import EnvelopeReveal from '@/components/EnvelopeReveal';
 
 import corgiLove from '@/assets/corgi-love.gif';
 import corgiBored from '@/assets/corgi-bored.gif';
+import corgiBored2 from '@/assets/corgi-bored-2.gif';
 import corgiFinal from '@/assets/corgi-final.gif';
 
 const PARTNER_NAME = "Amy";
@@ -152,8 +153,8 @@ const Index = () => {
             question="Good bubbi! Are you free on the evening of February 14th, Saturday?"
             image={
               <img
-                src={corgiLove}
-                alt="Cute corgi couple"
+                src={corgiBored2}
+                alt="Bored corgi couple"
                 className="w-64 h-64 object-contain mx-auto"
               />
             }
