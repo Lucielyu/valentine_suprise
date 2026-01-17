@@ -11,6 +11,7 @@ import corgiLove from '@/assets/corgi-love.gif';
 import corgiBored from '@/assets/corgi-bored.gif';
 import corgiBored2 from '@/assets/corgi-bored-2.gif';
 import corgiFinal from '@/assets/corgi-final.gif';
+import bgMusic from '@/assets/fly-me-to-the-moon.mp3';
 
 const PARTNER_NAME = "Amy";
 const YOUR_NAME = "Luciel";
@@ -203,11 +204,11 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background music - Romantic jazz melody */}
+      {/* Background music - Fly Me to the Moon Lofi */}
       <audio
         ref={audioRef}
         loop
-        src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_946b0939c8.mp3?filename=fly-me-to-the-moon-jazz-137979.mp3"
+        src={bgMusic}
       />
 
       <FallingHearts />
